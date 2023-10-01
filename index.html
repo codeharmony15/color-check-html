@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Color contrast checker | poundsix</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" href="assets/images/favicon.ico" />
+	<link href="assets/css/mine.css?v=1.02" rel="stylesheet" type="text/css" />
+	<link href="assets/css/plugins.bundle.css?v=1.01" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css?v=1.02" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="kt_body"
+	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed"
+	style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+	<div class="d-flex flex-column flex-root">
+		<div class="page d-flex flex-row flex-column-fluid">
+
+			<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+				<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+					<div class="post d-flex flex-column-fluid" id="kt_post">
+						<div id="kt_content_container" class="container-xxl">
+							<div class="" id="kt_modal_new_target" tabindex="-1" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered mw-936px">
+									<div class="modal-content rounded">
+										<div class="modal-body scroll-y" style="overflow: hidden;">
+											<form id="kt_modal_new_target_form" class="form" action="#">
+												<div class="mb-13 text-center">
+													<h1 class="mb-3">color contrast checker</h1>
+													<div class="text-muted fw-bold fs-5">Check color contrast levels for multiple colors at once.</div>
+												</div>
+												<div class="d-flex flex-column mb-8 fv-row">
+													<label class="d-flex align-items-center fs-6 fw-bold mb-2">
+														<span>Colors</span>
+													</label>
+													<input class="form-control form-control-solid" id="color_tag"
+														placeholder="Add hex numbers" value="" name="tags" />
+													<div class="fs-7 fw-bold text-muted">Submit up to 20 colors at a
+														time by pressing Enter or adding a comma after each hex number.
+													</div>
+												</div>
+												<div class="">
+													<button type="button" id="kt_modal_new_target_submit"
+														class="btn btn-primary btn-submit d-none">Submit</button>
+													<button type="button" id="tag_clear"
+														class="btn btn-light me-3 d-none">Clear all</button>
+												</div>
+												<div class="card card-xl-stretch mb-5 mb-xl-8" style="display: none;">
+													<div class="card-header border-0">
+														<h3 class="card-title align-items-start flex-column">
+														</h3>
+														<div class="card-toolbar" title="">
+															<a href="#" class="btn-active-primary save-pdf"
+																data-bs-toggle="modal"
+																data-bs-target="#kt_modal_invite_friends">
+																<svg width="24" height="24" viewBox="0 0 24 24"
+																	fill="none" xmlns="http://www.w3.org/2000/svg">
+																	<path
+																		d="M8.28479 15.636C8.49479 15.513 8.72429 15.393 8.97329 15.279C8.76294 15.5926 8.53768 15.896 8.29829 16.188C7.87829 16.6935 7.55129 16.962 7.34579 17.046C7.32873 17.0532 7.31119 17.0592 7.29329 17.064C7.27832 17.0432 7.26526 17.0211 7.25429 16.998C7.17029 16.833 7.17329 16.674 7.31429 16.458C7.47329 16.2105 7.79279 15.927 8.28479 15.636ZM11.9673 13.1655C11.7888 13.203 11.6118 13.2405 11.4333 13.2825C11.6978 12.7645 11.9479 12.2393 12.1833 11.7075C12.4203 12.147 12.6755 12.5763 12.9483 12.9945C12.6228 13.0425 12.2943 13.0995 11.9673 13.1655ZM15.7548 14.574C15.5218 14.386 15.3037 14.1804 15.1023 13.959C15.4443 13.9665 15.7533 13.992 16.0203 14.04C16.4958 14.1255 16.7193 14.2605 16.7973 14.3535C16.8219 14.3795 16.8358 14.4137 16.8363 14.4495C16.831 14.5553 16.8001 14.6583 16.7463 14.7495C16.716 14.8226 16.6675 14.8866 16.6053 14.9355C16.5743 14.9545 16.5378 14.9624 16.5018 14.958C16.3668 14.9535 16.1148 14.859 15.7548 14.574ZM12.4173 7.455C12.3573 7.821 12.2553 8.241 12.1173 8.6985C12.0664 8.52719 12.0219 8.35408 11.9838 8.1795C11.8698 7.65 11.8533 7.2345 11.9148 6.9465C11.9718 6.681 12.0798 6.5745 12.2088 6.522C12.278 6.4915 12.3513 6.47129 12.4263 6.462C12.4458 6.507 12.4683 6.6 12.4743 6.759C12.4818 6.942 12.4638 7.1745 12.4173 7.4565V7.455Z"
+																		fill="#6750A4" />
+																	<path fill-rule="evenodd" clip-rule="evenodd"
+																		d="M6 0H18C18.7956 0 19.5587 0.316071 20.1213 0.87868C20.6839 1.44129 21 2.20435 21 3V21C21 21.7956 20.6839 22.5587 20.1213 23.1213C19.5587 23.6839 18.7956 24 18 24H6C5.20435 24 4.44129 23.6839 3.87868 23.1213C3.31607 22.5587 3 21.7956 3 21V3C3 2.20435 3.31607 1.44129 3.87868 0.87868C4.44129 0.316071 5.20435 0 6 0ZM6.2475 17.502C6.3825 17.772 6.5925 18.0165 6.9045 18.1305C7.215 18.243 7.5225 18.1905 7.7745 18.0855C8.2515 17.8905 8.727 17.4315 9.1635 16.9065C9.663 16.305 10.188 15.516 10.695 14.6415C11.6738 14.3513 12.6761 14.1475 13.6905 14.0325C14.1405 14.607 14.6055 15.102 15.0555 15.4575C15.4755 15.7875 15.96 16.062 16.4565 16.083C16.7269 16.0964 16.9947 16.0239 17.2215 15.876C17.454 15.7245 17.6265 15.5055 17.7525 15.252C17.8875 14.9805 17.97 14.697 17.9595 14.4075C17.95 14.1221 17.8443 13.8482 17.6595 13.6305C17.3205 13.2255 16.7655 13.0305 16.2195 12.933C15.5572 12.8304 14.8851 12.8052 14.217 12.858C13.6528 12.0604 13.1608 11.214 12.747 10.329C13.122 9.339 13.4025 8.403 13.527 7.638C13.581 7.311 13.6095 6.999 13.599 6.717C13.5971 6.43708 13.532 6.1612 13.4085 5.91C13.3373 5.77137 13.2362 5.65031 13.1125 5.55561C12.9887 5.46091 12.8454 5.39495 12.693 5.3625C12.39 5.298 12.078 5.3625 11.7915 5.478C11.226 5.703 10.9275 6.183 10.815 6.7125C10.7055 7.2225 10.755 7.8165 10.884 8.4165C11.016 9.0255 11.241 9.6885 11.529 10.359C11.0683 11.5047 10.5363 12.6204 9.936 13.6995C9.16296 13.9427 8.41782 14.267 7.713 14.667C7.158 14.997 6.6645 15.387 6.3675 15.8475C6.0525 16.3365 5.955 16.9185 6.2475 17.502Z"
+																		fill="#6750A4" />
+																</svg>
+																<span class="ft-14">Save as PDF</span>
+															</a>
+														</div>
+													</div>
+													<div class=" color-tbl">
+														<div class="card-body py-3">
+															<div class="table-responsive">
+																<table
+																	class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+																	<thead>
+																		<tr class="fw-bolder" style="color: #4A4A4A;">
+																			<th class="min-w-145px table_head_h2">Colors
+																			</th>
+																			<th class="min-w-285px table_head_h2">
+																				Preview</th>
+																			<th class="min-w-160px table_head_h2">Normal
+																				Text 
+																					<i
+																					data-bs-toggle="tooltip"
+																					data-bs-placement="top"
+																					data-bs-trigger="hover"
+																					title="Normal text: &#xA; At least 16px with regular weight or heavier">
+																					<svg class="info-ico" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																						<path d="M8 16C10.1217 16 12.1566 15.1571 13.6569 13.6569C15.1571 12.1566 16 10.1217 16 8C16 5.87827 15.1571 3.84344 13.6569 2.34315C12.1566 0.842855 10.1217 0 8 0C5.87827 0 3.84344 0.842855 2.34315 2.34315C0.842855 3.84344 0 5.87827 0 8C0 10.1217 0.842855 12.1566 2.34315 13.6569C3.84344 15.1571 5.87827 16 8 16ZM6.75 10.5H7.5V8.5H6.75C6.33437 8.5 6 8.16562 6 7.75C6 7.33437 6.33437 7 6.75 7H8.25C8.66562 7 9 7.33437 9 7.75V10.5H9.25C9.66562 10.5 10 10.8344 10 11.25C10 11.6656 9.66562 12 9.25 12H6.75C6.33437 12 6 11.6656 6 11.25C6 10.8344 6.33437 10.5 6.75 10.5ZM8 4C8.26522 4 8.51957 4.10536 8.70711 4.29289C8.89464 4.48043 9 4.73478 9 5C9 5.26522 8.89464 5.51957 8.70711 5.70711C8.51957 5.89464 8.26522 6 8 6C7.73478 6 7.48043 5.89464 7.29289 5.70711C7.10536 5.51957 7 5.26522 7 5C7 4.73478 7.10536 4.48043 7.29289 4.29289C7.48043 4.10536 7.73478 4 8 4Z" fill="black"/>
+																					</svg>
+																					</i>
+																			</th>
+																			<th class="min-w-160px table_head_h2">Large
+																				Text <i
+																					data-bs-toggle="tooltip"
+																					data-bs-placement="top"
+																					data-bs-trigger="hover"
+																					title="Large text: &#xA; At least 18.66px with bold weight or 24px with regular weight">
+																					<svg class="info-ico" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																						<path d="M8 16C10.1217 16 12.1566 15.1571 13.6569 13.6569C15.1571 12.1566 16 10.1217 16 8C16 5.87827 15.1571 3.84344 13.6569 2.34315C12.1566 0.842855 10.1217 0 8 0C5.87827 0 3.84344 0.842855 2.34315 2.34315C0.842855 3.84344 0 5.87827 0 8C0 10.1217 0.842855 12.1566 2.34315 13.6569C3.84344 15.1571 5.87827 16 8 16ZM6.75 10.5H7.5V8.5H6.75C6.33437 8.5 6 8.16562 6 7.75C6 7.33437 6.33437 7 6.75 7H8.25C8.66562 7 9 7.33437 9 7.75V10.5H9.25C9.66562 10.5 10 10.8344 10 11.25C10 11.6656 9.66562 12 9.25 12H6.75C6.33437 12 6 11.6656 6 11.25C6 10.8344 6.33437 10.5 6.75 10.5ZM8 4C8.26522 4 8.51957 4.10536 8.70711 4.29289C8.89464 4.48043 9 4.73478 9 5C9 5.26522 8.89464 5.51957 8.70711 5.70711C8.51957 5.89464 8.26522 6 8 6C7.73478 6 7.48043 5.89464 7.29289 5.70711C7.10536 5.51957 7 5.26522 7 5C7 4.73478 7.10536 4.48043 7.29289 4.29289C7.48043 4.10536 7.73478 4 8 4Z" fill="black"/>
+																					</svg>
+																				</i>
+																			</th>
+																			<th class="min-w-160px table_head_h2">
+																				Non-text <i
+																					data-bs-toggle="tooltip"
+																					data-bs-placement="top"
+																					data-bs-trigger="hover"
+																					title="Non-text: &#xA; UI components and graphical objects">
+																					<svg class="info-ico" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																						<path d="M8 16C10.1217 16 12.1566 15.1571 13.6569 13.6569C15.1571 12.1566 16 10.1217 16 8C16 5.87827 15.1571 3.84344 13.6569 2.34315C12.1566 0.842855 10.1217 0 8 0C5.87827 0 3.84344 0.842855 2.34315 2.34315C0.842855 3.84344 0 5.87827 0 8C0 10.1217 0.842855 12.1566 2.34315 13.6569C3.84344 15.1571 5.87827 16 8 16ZM6.75 10.5H7.5V8.5H6.75C6.33437 8.5 6 8.16562 6 7.75C6 7.33437 6.33437 7 6.75 7H8.25C8.66562 7 9 7.33437 9 7.75V10.5H9.25C9.66562 10.5 10 10.8344 10 11.25C10 11.6656 9.66562 12 9.25 12H6.75C6.33437 12 6 11.6656 6 11.25C6 10.8344 6.33437 10.5 6.75 10.5ZM8 4C8.26522 4 8.51957 4.10536 8.70711 4.29289C8.89464 4.48043 9 4.73478 9 5C9 5.26522 8.89464 5.51957 8.70711 5.70711C8.51957 5.89464 8.26522 6 8 6C7.73478 6 7.48043 5.89464 7.29289 5.70711C7.10536 5.51957 7 5.26522 7 5C7 4.73478 7.10536 4.48043 7.29289 4.29289C7.48043 4.10536 7.73478 4 8 4Z" fill="black"/>
+																					</svg>
+																				</i>
+																			</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+		<span class="svg-icon">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)"
+					fill="black" />
+				<path
+					d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
+					fill="black" />
+			</svg>
+		</span>
+	</div>
+	<script>
+		var hostUrl = "assets/";
+		var tagify_obj;
+	</script>
+	<script src="assets/js/plugins.bundle.js?v=1.05"></script>
+	<script src="assets/js/scripts.bundle.js?v=1.01"></script>
+	<script src="assets/js/new-target.js"></script>
+	<script src="assets/js/widgets.js"></script>
+	<script src="assets/js/create-app.js"></script>
+	<script src="assets/js/upgrade-plan.js"></script>
+	<script src="assets/js/html2canvas.js"></script>
+	<script src="assets/js/html2pdf.bundle.min.js"></script>
+	<script src="assets/js/jspdf.umd.js"></script>
+	<script src="assets/js/fa-solid-900-normal.js"></script>
+	<script src="assets/js/Poppins-Medium-normal.js"></script>
+	<script src="assets/js/color.js"></script>
+	
+	<script type="text/javascript">
+		var _tt = '';
+		var t_cont = "";
+		var count = 0;
+		var keyList = [];
+		var contentText;
+		var _height, _width;
+		window.jsPDF = window.jspdf.jsPDF;
+		var form, canvas_height;
+
+		$('.save-pdf').on('click', function () {
+
+				var element = $('.color-tbl').html();
+				let body = document.body
+				var opt = {
+					margin:       1,
+					pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+					filename:     'colors.pdf',
+					image:        { type: 'jpeg', quality: 1 },
+					html2canvas:  { scale: 5 },
+					jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' }
+					};
+					html2pdf().set(opt).from(element).save();
+			});
+
+		function getCanvas() {
+			form = $('.color-tbl')[0];
+			canvas_height = form.clientHeight;
+			_height = form.offsetHeight,
+			_width =  form.offsetWidth
+			return html2canvas(form, {
+				scale: 1,
+				width: form.offsetWidth,
+				height: form.offsetHeight,
+				imageTimeout: 2000,  
+				removeContainer: true  
+			});  
+		}
+
+		function checkSubmit() {
+			if (count > 0) {
+				$('#tag_clear').removeClass('d-none');
+			} else {
+				$('#tag_clear').addClass('d-none');
+			}
+			if (count >= 2) {
+				$('#kt_modal_new_target_submit').removeClass('d-none');
+			} else {
+				$('#kt_modal_new_target_submit').addClass('d-none');
+			}
+		}
+
+		$('#tag_clear').on('click', function () {
+			$('.card.card-xl-stretch').addClass('d-none');
+			tagify_obj.removeAllTags();
+			count = 0;
+			checkSubmit();
+		});
+
+		$('.btn-submit').on('click', function () {
+			var children = $('.tagify .tagify__tag').get();
+			var clone = $('color-list-templ').clone();
+			$('color-tbl tbody').html(clone.html());
+			$('.card.card-xl-stretch').removeClass('d-none');
+		});
+
+		$('#kt_modal_new_target_submit').click(function () {
+			$('.card').attr('style', '');
+			$('table .color-list-templ').remove();
+
+			var colors = [];
+
+			for (var i = 0; i < $('.tagify tag').length; i++) {
+				colors[i] = $('.tagify tag')[i].title.toUpperCase();
+			}
+
+			for (var i = 0; i < colors.length; i++) {
+				for (var j = i + 1; j < colors.length; j++) {
+					make_tr(colors[i], colors[j]);
+					make_tr(colors[j], colors[i]);
+				}
+			}
+		});
+
+		function make_tr(foreground_color, background_color) {
+			var fg_r = hexToRgb(foreground_color).r;
+			var fg_g = hexToRgb(foreground_color).g;
+			var fg_b = hexToRgb(foreground_color).b;
+			var fg = `rgb(${fg_r}, ${fg_g}, ${fg_b})`;
+			var fg_color = new Color(fg);
+
+			var bg_r = hexToRgb(background_color).r;
+			var bg_g = hexToRgb(background_color).g;
+			var bg_b = hexToRgb(background_color).b;
+
+			var bg = `rgb(${bg_r}, ${bg_g}, ${bg_b})`;
+			var bg_color = new Color(bg);
+
+			let _con = bg_color.contrast(fg_color).ratio;
+
+			var tr = '';
+			tr += '<tr class="color-list-templ">';
+			tr += '<td>';
+			tr += '<div class="d-flex align-items-center">';
+			tr += '<div class="border border-gray-300 border-dashed rounded border-0 min-w-80px mb-3">';
+			tr += '<div class="ft-20 fw-bolder text-gray-700 color-foreground">' + foreground_color + '</div>';
+			tr += '<div class="fw-bold text-gray-400 ft-14">foreground color</div>';
+			tr += '<div class="ft-20 fw-bolder text-gray-700 color-background">' + background_color + '</div>';
+			tr += '<div class="fw-bold text-gray-400 ft-14">background color</div>';
+			tr += '</div>';
+			tr += '</div>';
+			tr += '</td>';
+			tr += '<td>';
+			tr += '<div class="d-flex align-items-center">';
+			tr += '<div class="border border-gray-300 border-dashed rounded mb-3 shape_content" style="background-color:' +
+				background_color + ' !important;">';
+			tr += '<i class="icon-xl fas fa-shapes shape_icon" style="color:' + foreground_color + ' !important"></i>';
+			tr += '</div>';
+			tr += '<div class="border border-gray-300 border-dashed rounded mb-3 shape_content" style="background-color:' +
+				background_color + ' !important;">';
+			tr += '<div class="fw-bold text-gray-400 shape_text"><span style="color:' + foreground_color +
+				' !important">sample 16px text</span></div>';
+			tr += '</div>';
+			tr += '</div>';
+			tr += '</td>';
+			tr += '<td>';
+			tr += '<div class="d-flex flex-column w-100 me-2">';
+			tr += '<div class="colors_chips">';
+			tr += '<ul class="list">';
+			tr +=
+				`<li class=${_con > 4.5 ? "success": "error"}><a class=${_con > 4.5 ? "success": "error"}><i class="icon-xl fas ${_con > 4.5 ? "fa-check": "fa-times"} color-white"></i></a><span>AA - 4.5:1</span></li>`;
+			tr +=
+				`<li class=${_con > 7 ? "success": "error"}><a class=${_con > 7 ? "success": "error"}><i class="icon-xl fas ${_con > 7 ? "fa-check": "fa-times"} color-white"></i></a><span>AAA - 7:1</span></li>`;
+			tr += '</ul>';
+			tr += '</div>';
+			tr += '</div>';
+			tr += '</td>';
+			tr += '<td>';
+			tr += '<div class="d-flex flex-column w-100 me-2">';
+			tr += '<div class="colors_chips">';
+			tr += '<ul class="list">';
+			tr +=
+				`<li class=${_con > 3 ? "success": "error"}><a class=${_con > 3 ? "success": "error"}><i class="icon-xl fas ${_con > 3 ? "fa-check": "fa-times"} color-white"></i></a><span>AA - 3:1</span></li>`;
+			tr +=
+				`<li class=${_con > 4.5 ? "success": "error"}><a class=${_con > 4.5 ? "success": "error"}><i class="icon-xl fas ${_con > 4.5 ? "fa-check": "fa-times"} color-white"></i></a><span>AAA - 4.5:1</span></li>`;
+			tr += '</ul>';
+			tr += '</div>';
+			tr += '</div>';
+			tr += '</td>';
+			tr += '<td>';
+			tr += '<div class="d-flex flex-shrink-0">';
+			tr += '<div class="colors_chips">';
+			tr += '<ul class="list">';
+			tr +=
+				`<li class=${_con > 3 ? "success": "error"}><a class=${_con > 3 ? "success": "error"}><i class="icon-xl fas ${_con > 3 ? "fa-check": "fa-times"} color-white"></i></a><span>3:1</span></li>`;
+			tr += '</ul>';
+			tr += '</div>';
+			tr += '</div>';
+			tr += '</td>';
+			tr += '</tr>';
+			$('tbody').append(tr);
+		}
+
+		function hexToRgb(hex) {
+			var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+			return result ? {
+				r: parseInt(result[1], 16),
+				g: parseInt(result[2], 16),
+				b: parseInt(result[3], 16)
+			} : null;
+		}
+	</script>
+</body>
+
+</html>
